@@ -6,7 +6,7 @@ class Inventory(models.Model):
     name = models.CharField(max_length=128)
     count = models.IntegerField()
     product_status = models.CharField(max_length=12, choices=(
-    ('сломанный', 'сломанный'), ('новый', 'новый'), ('используемый', 'используемый')), default='новый')
+        ('сломанный', 'сломанный'), ('новый', 'новый'), ('используемый', 'используемый')), default='новый')
 
     class Meta:
         verbose_name = 'позицию инвентаря'
@@ -14,3 +14,26 @@ class Inventory(models.Model):
 
     def __str__(self):
         return f'Наименование: {self.name}. Количество: {self.count}'
+
+
+class Plan(models.Model):
+    name = models.CharField(max_length=256)
+    count = models.IntegerField(default=0)
+    provider = models.CharField(max_length=256)
+
+    class Meta:
+        verbose_name = 'позицию плана'
+        verbose_name_plural = 'План инвенторя'
+
+
+class Application(models.Model):
+    id_application = models.CharField(max_length=128)
+    status_application = models.CharField(max_length=12, choices=(
+        ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
+
+    def __str__(self):
+        return f'{self.id_application}_{self.status_application}'
+
+    class Meta:
+        verbose_name = 'заявку'
+        verbose_name_plural = 'Заявка'

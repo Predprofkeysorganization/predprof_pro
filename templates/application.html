@@ -1,0 +1,18 @@
+{% extends 'mainhtm.html' %}
+{% block title %} Заявки {% endblock %}
+{% block main_1 %}
+<form>
+    {% csrf_token %}
+    <p align="center">Заявка на управление инвентарем</p><br>
+    <input type="text" class="form-control" placeholder="Имя отправителя который зарегистрирован"
+           name="application_1"><br>
+    <textarea placeholder="Введите текст заявки" style="width: 400px" name="application_2"></textarea><br>
+    <button type="submit" class="btn btn-outline-primary">Отправить</button>
+    <!--            <a href='#' type="button" class="btn btn-outline-primary">На главную</a>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <button type="button" class="btn btn-outline-primary">Получить Статус заявки</button>-->
+    <!--            <label>заявка еще не обработана</label>-->
+    <!--        </div>-->
+</form>
+{% endblock %}

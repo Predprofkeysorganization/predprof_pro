@@ -14,7 +14,7 @@
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm#F">
                 <h1><a class="p-2 text-dark" href="http://127.0.0.1:8000"><font style="text-decoration: none;"><font
                         style="vertical-align: inherit;">Главная</font></font></a></h1>
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/registration"
+                <a class="btn btn-outline-primary" href="{% url 'users:registration' %}"
                    style="margin-left: 600px;"><font style="vertical-align: inherit;"><font
                         style="vertical-align: inherit;">Регистрация</font></font></a>&nbsp;&nbsp;&nbsp;
                 <a class="btn btn-outline-primary" href="{% url 'users:login' %}"><font
@@ -31,9 +31,34 @@
         </div>
     </div>
 </div>
-<div>
-    <h1 style="text-align:center">Зарегистируйтесь или авторизуйтесь для просмотра инвентаря</h1>
-</div>
+<form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Состояние</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in inventory %}
+        <!--        <div class="card" style="width: 18rem;">-->
+        <!--            <img src="C:\Users\kheledorogh\PycharmProjects\gitproject\inventorytovar.png" class="card-img-top" alt="1">-->
+        <!--            <div class="card-body">-->
+        <!--                <h6 class="card-title">{{ i.name }}</h6>-->
+        <!--                <h5 class="card-text">{{ i.count }}</h5>-->
+        <!--                <h5 class="card-text">{{ i.product_status }}</h5>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.count }}</td>
+            <td>{{ i.product_status }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
 <!--<marquee scrolldelay="100" truespeed><a href="http://127.0.0.1:8000/registration_user" class="button-like">-->
 <!--    <button>Каталог</button></a>&nbsp&nbsp&nbsp;-->
 <!--    <button type="button" class="btn btn-outline-dark">Button</button>-->

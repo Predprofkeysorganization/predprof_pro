@@ -1,58 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Главная</title>
-</head>
-<body>
-    <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm#F">
-                <h1><a class="p-2 text-dark" href="http://127.0.0.1:8000"><font style="text-decoration: none;"><font
-                        style="vertical-align: inherit;">Главная</font></font></a></h1>
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/registration"
-                   style="margin-left: 500px;"><font style="vertical-align: inherit;"><font
-                        style="vertical-align: inherit;">Создать заявку</font></font></a>&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/auth_user"><font
-                        style="vertical-align: inherit;"><font
-                        style="vertical-align: inherit;">Статус заявки</font></font></a>&nbsp;&nbsp;
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/auth_user"><font
-                        style="vertical-align: inherit;"><font
-                        style="vertical-align: inherit;">Выйти</font></font></a>&nbsp;&nbsp;
-                <a href="http://127.0.0.1:8000/admin" title="Вход для администтратора">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" color="blue" fill="currentColor"
-                         class="bi bi-person"
-                         viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
-                    </svg>
-                </a>
+{% extends 'mainhtm.html' %}
+
+{% block main_1 %}
+<form>
+    <!--    <table class="table">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--            <th scope="col">Имя</th>-->
+    <!--            <th scope="col">Количество</th>-->
+    <!--            <th scope="col">Состояние</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    {% for i in inventory %}
+    <div style="float: left; margin: 10px">
+        <div class="card" style="width: 18rem; height: 25rem">
+            <img src="https://cdn.culture.ru/images/0f698765-1077-5fa2-93c4-aa6c5f5f54bd" class="card-img-top" alt="1">
+            <div class="card-body">
+                <h5 class="card-title">Наименование: {{ i.name }}</h5>
+                <h6 class="card-text">Количество: {{ i.count }}</h6>
+                <h6 class="card-text">Статус: {{ i.product_status }}</h6>
+                <a>Оставить заявку на ремонт</a>
             </div>
         </div>
     </div>
-</div>
-<form>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Имя</th>
-      <th scope="col">Количество</th>
-      <th scope="col">Состояние</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for i in inventory %}
-    <tr>
-      <td>{{ i.name }}</td>
-      <td>{{ i.count }}</td>
-      <td>{{ i.product_status }}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-    </table>
+    <!--        <tr>-->
+    <!--            <td>{{ i.name }}</td>-->
+    <!--            <td>{{ i.count }}</td>-->
+    <!--            <td>{{ i.product_status }}</td>-->
+    <!--        </tr>-->
+    {% endfor %}
+<!--    </tbody>-->
+<!--    </table>-->
 </form>
-</body>
-</html>
+{% endblock %}

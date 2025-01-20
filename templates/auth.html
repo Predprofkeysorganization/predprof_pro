@@ -13,21 +13,23 @@
 <form action="{% url 'users:login' %}" method="post">
     <div class="form-group">
         {% csrf_token %}
-        <label for="exampleInputEmail1">Адрес электронной почты</label>
+        <label>Адрес электронной почты</label>
         {{ form.username }}
     </div>
     <br>
     <div>
-    <div class="form-group">
-        <label for="exampleInputPassword">Пароль</label>
-                {{ form.password }}
-    </div>
-    <br>
-    <div class="form-group">
-        <div>
-            <a href="http://127.0.0.1:8000" type="submit" class="btn btn-primary">Войти</a>&nbsp;&nbsp;
+        <div class="form-group">
+            <label>Пароль</label>
+            {{ form.password }}
         </div>
-    </div>
+        <br>
+        <div class="form-group">
+            <div>
+                <button type="submit" class="btn btn-primary">Войти</button>&nbsp;&nbsp;
+                <label>Если не получилось войти значит введены неверно имя или пароль или вы не зарегистрированы. <a
+                        href="{% url 'users:registration' %}">Зарегистрируйтесь здесь</a></label>
+            </div>
+        </div>
 </form>
 </body>
 </html>
