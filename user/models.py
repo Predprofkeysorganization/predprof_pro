@@ -27,13 +27,26 @@ class Plan(models.Model):
 
 
 class Application(models.Model):
-    id_application = models.CharField(max_length=128)
+    id_application = models.IntegerField(primary_key=True, blank=True)
+    name_application = models.CharField(max_length=128)
     status_application = models.CharField(max_length=12, choices=(
         ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
 
     def __str__(self):
-        return f'{self.id_application}_{self.status_application}'
+        return f'{self.name_application} {self.status_application}'
 
     class Meta:
         verbose_name = 'заявку'
         verbose_name_plural = 'Заявка'
+
+
+class ApplicationRepair(models.Model):
+    id_application_repair = models.IntegerField(primary_key=True, blank=True)
+    name = models.CharField(max_length=128)
+    repair_info = models.CharField(max_length=1000)
+    status_application = models.CharField(max_length=12, choices=(
+        ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
+
+    class Meta:
+        verbose_name = 'заявку на ремонт или замену'
+        verbose_name_plural = 'заявка на ремонт или замену'

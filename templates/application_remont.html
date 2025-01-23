@@ -1,0 +1,21 @@
+{% extends 'mainhtm.html' %}
+{% block title %} Заявка на ремонт {% endblock %}
+{% block main_1 %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p align="center">Заявка на ремонт инвентарем</p><br>
+    <input type="text" class="form-control" placeholder="Имя отправителя который зарегистрирован"
+           name="application_3"><br>
+    <textarea placeholder="Наименование. Причина" style="width: 400px" name="application_4"></textarea><br>
+    <button type="submit" class="btn btn-outline-primary">Отправить</button>
+    {% for i in table %}
+        <p>Статус заявки: {{ i.status_application }}</p>
+    {% endfor %}
+    <!--            <a href='#' type="button" class="btn btn-outline-primary">На главную</a>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--            <button type="button" class="btn btn-outline-primary">Получить Статус заявки</button>-->
+    <!--            <label>заявка еще не обработана</label>-->
+    <!--        </div>-->
+</form>
+{% endblock %}

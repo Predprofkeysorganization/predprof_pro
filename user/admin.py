@@ -1,5 +1,8 @@
 from django.contrib import admin
-from user.models import Inventory, Plan, Application
+from user.models import Inventory, Plan, Application, ApplicationRepair
+
+
+admin.site.site_header = 'Панель администратора'
 
 
 @admin.register(Inventory)
@@ -14,10 +17,13 @@ class PlanAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-admin.site.site_header = 'Панель администратора'
-
-
 @admin.register(Application)
 class AppAdmin(admin.ModelAdmin):
-    list_display = ('id_application', 'status_application')
+    list_display = ('id_application', 'name_application', 'status_application')
     search_fields = ('status_application',)
+
+
+@admin.register(ApplicationRepair)
+class AppAdmin(admin.ModelAdmin):
+    list_display = ('id_application_repair', 'name', 'repair_info', 'status_application')
+    search_fields = ('id_application_repair', )

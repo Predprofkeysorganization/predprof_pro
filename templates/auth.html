@@ -26,9 +26,9 @@
         <div class="form-group">
             <div>
                 <button type="submit" class="btn btn-primary">Войти</button>&nbsp;&nbsp;
-                <label>Если не получилось войти значит введены неверно имя или пароль или вы не зарегистрированы. <a
-                        href="{% url 'users:registration' %}">Зарегистрируйтесь здесь</a></label>
-            </div>
+                <a type="Главная" class="btn btn-primary" href="{% url 'index' %}">На главную</a>
+                <label>Если не получилось войти, значит введены неверно логин или пароль, или вы не зарегистрированы.<a
+                        href="{% url 'users:registration' %}">Зарегистрироваться можно здесь.</a></label><br></div>
         </div>
 </form>
 </body>

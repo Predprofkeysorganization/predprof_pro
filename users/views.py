@@ -2,6 +2,7 @@ from django.shortcuts import *
 from users.forms import UserLoginForm, RegistrationUser
 from django.urls import reverse
 from django.contrib import auth
+from user.models import Application
 from users.models import Users
 
 
@@ -14,7 +15,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect('http://127.0.0.1:8000/main')
+                return HttpResponseRedirect(reverse('main'))
     else:
         form = UserLoginForm()
     context = {'form': form}
@@ -26,7 +27,7 @@ def registration(request):
         form = RegistrationUser(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('http://127.0.0.1:8000/main')
+            return HttpResponseRedirect(reverse('index'))
     else:
         form = RegistrationUser()
-    return render(request, 'registration_admin.html', context={'form': form})
+    return render(request, 'registration_admin.html', context={'form': form, 'table': Application.objects.all()})

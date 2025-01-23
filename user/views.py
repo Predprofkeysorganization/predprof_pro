@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect
-from user.models import Inventory, Application
+from user.models import Inventory, Application, ApplicationRepair
 from django.urls import reverse
+
+
 # Create your views here.
 
 
@@ -9,7 +12,6 @@ def index(request):
 
 
 def main1(request):
-    print(request.POST.get('name', 'n'))
     return render(request, 'main.html', context={'inventory': Inventory.objects.all()})
 
 
@@ -18,14 +20,27 @@ def authorization(request):
 
 
 def authorization1(request):
-    print(request.GET.get('application_1', '1'))
-    print(request.GET.get('application_2', '1'))
-    app = Application(id_application=request.GET.get('application_1', '1'), status_application='необработана')
-    app.save()
-    print(Application.objects.all())
-    return render(request, 'application.html')
-    # return HttpResponseRedirect(reverse('index'))
+    if request.method == 'POST':
+        dict_obj_1 = dict(request.POST)
+        get_object = dict_obj_1.get('application_1', False)
+        if get_object[0]:
+            app = Application(name_application=''.join(get_object), status_application='необработана')
+            app.save()
+            return HttpResponseRedirect(reverse('main'))
+    return render(request, 'application.html', context={'table': Application.objects.all()})
 
+
+def authorization2(request):
+    if request.method == 'POST':
+        dict_obj_1 = dict(request.POST)
+        get_object = dict_obj_1.get('application_3', False)
+        get_object_1 = dict_obj_1.get('application_4', False)
+        if get_object[0]:
+            app = ApplicationRepair(name=''.join(get_object), repair_info=''.join(get_object_1))
+            app.save()
+            return HttpResponseRedirect(reverse('main'))
+    return render(request, 'application_remont.html', context={'table': ApplicationRepair.objects.all()})
+    # return render(request, 'application_remont.html')
 
 # def registration(request):
 #     return render(request, 'registration_admin.html')
