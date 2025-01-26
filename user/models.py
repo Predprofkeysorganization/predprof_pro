@@ -55,3 +55,17 @@ class ApplicationRepair(models.Model):
     class Meta:
         verbose_name = 'заявку на ремонт или замену'
         verbose_name_plural = 'заявка на ремонт или замену'
+
+
+class Report(models.Model):
+    id_report = models.IntegerField(primary_key=True, blank=True)
+    name_manager = models.CharField(max_length=128)
+    status_report = models.CharField(max_length=13, choices=(
+        ('использует', 'использует'), ('не использует', 'не использует')), default='не использует')
+
+    def __str__(self):
+        return f'{self.id_report} {self.name_manager} {self.status_report}'
+
+    class Meta:
+        verbose_name = 'отчет'
+        verbose_name_plural = 'отчет'
