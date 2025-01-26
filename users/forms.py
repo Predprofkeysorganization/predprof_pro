@@ -15,13 +15,17 @@ class UserLoginForm(AuthenticationForm):
 
 class RegistrationUser(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите имя'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Введите пароль'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Повторите пароль'}))
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Введите пароль'}))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Повторите пароль'}))
 
     class Meta:
         model = Users
         fields = ('username', 'password1', 'password2')
 
 
-class Application(UserChangeForm):
-    first_name = forms.CharField
+class ApplicationForm(UserChangeForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Поле не заполняется вместо него будет отправлено ваше имя', 'name': 'application_3', 'class': 'form-control', 'type': 'text', 'disabled': 'disabled'}))

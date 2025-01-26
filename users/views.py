@@ -15,7 +15,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('main'))
+                return HttpResponseRedirect(reverse('index'))
     else:
         form = UserLoginForm()
     context = {'form': form}
@@ -31,3 +31,8 @@ def registration(request):
     else:
         form = RegistrationUser()
     return render(request, 'registration_admin.html', context={'form': form, 'table': Application.objects.all()})
+
+
+def exit(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('index'))

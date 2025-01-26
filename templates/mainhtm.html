@@ -12,19 +12,43 @@
     <div class="row">
         <div class="col-sm">
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm#F">
-                <h1><a class="p-2 text-dark" href="http://127.0.0.1:8000"><font style="text-decoration: none;"><font
+<!--                <h1><a class="p-2 text-dark" href="http://127.0.0.1:8000"><font style="text-decoration: none;"><font-->
+<!--                        style="vertical-align: inherit;">Главная</font></font></a></h1>-->
+<!--                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/main_auth/"-->
+<!--                   style="margin-left: 475px;"><font style="vertical-align: inherit;"><font-->
+<!--                        style="vertical-align: inherit;">Создать заявку на инвентарь</font></font></a>&nbsp;&nbsp;&nbsp;-->
+<!--                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/application_remont"-->
+<!--                   style=""><font style="vertical-align: inherit;"><font-->
+<!--                        style="vertical-align: inherit;">Создать заявку на ремонт</font></font></a>&nbsp;&nbsp;&nbsp;-->
+<!--                <a class="btn btn-outline-primary" href="{% url 'users:exit' %}"><font-->
+<!--                        style="-->
+<!--                        vertical-align: inherit;"><font-->
+<!--                        style="-->
+<!--                        vertical-align: inherit;">Выйти</font></font></a>&nbsp;&nbsp;-->
+                 {% if user.is_authenticated %}
+                        <h1><a class="p-2 text-dark" href="http://127.0.0.1:8000"><font style="text-decoration: none;"><font
+                                style="vertical-align: inherit;">Главная</font></font></a></h1>
+                        <a class="btn btn-outline-primary" href="{% url 'app' %}"
+                           style="margin-left: 475px;"><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Создать заявку на инвентарь</font></font></a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/application_remont"
+                           style=""><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Создать заявку на ремонт</font></font></a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-outline-primary" href="{% url 'users:exit' %}"><font
+                                style="
+                                vertical-align: inherit;"><font
+                                style="
+                                vertical-align: inherit;">Выйти</font></font></a>&nbsp;&nbsp;
+                {% else %}
+                        <h1><a class="p-2 text-dark" href="{% url 'index' %}"><font style="text-decoration: none;"><font
                         style="vertical-align: inherit;">Главная</font></font></a></h1>
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/main_auth/"
-                   style="margin-left: 475px;"><font style="vertical-align: inherit;"><font
-                        style="vertical-align: inherit;">Создать заявку на инвентарь</font></font></a>&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-outline-primary" href="http://127.0.0.1:8000/application_remont"
-                   style=""><font style="vertical-align: inherit;"><font
-                        style="vertical-align: inherit;">Создать заявку на ремонт</font></font></a>&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-outline-primary" href="#"><font
-                        style="
-                        vertical-align: inherit;"><font
-                        style="
-                        vertical-align: inherit;">Выйти</font></font></a>&nbsp;&nbsp;
+                        <a class="btn btn-outline-primary" href="{% url 'users:registration' %}"
+                           style="margin-left: 600px;"><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Регистрация</font></font></a>&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-outline-primary" href="{% url 'users:login' %}"><font
+                                style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">Авторизация</font></font></a>&nbsp;&nbsp;
+                {% endif %}
                 <a href="http://127.0.0.1:8000/admin" title="Вход для администратора">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" color="blue" fill="currentColor"
                          class="bi bi-person"

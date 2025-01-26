@@ -13,13 +13,13 @@ class InventoryAdmin(admin.ModelAdmin):
 
 @admin.register(Plan)
 class PlanAdmin(admin.ModelAdmin):
-    list_display = ('name', 'count', 'provider')
+    list_display = ('name', 'price', 'provider')
     search_fields = ('name',)
 
 
 @admin.register(Application)
 class AppAdmin(admin.ModelAdmin):
-    list_display = ('id_application', 'name_application', 'status_application')
+    list_display = ('id_application', 'name_application', 'status_application', 'information')
     search_fields = ('status_application',)
 
 

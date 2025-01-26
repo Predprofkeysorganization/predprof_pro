@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('main/', main1, name='main'),
-    path('main_auth/', authorization1, name='app'),
+    path('application/', authorization1, name='app'),
     path('application_remont/', authorization2, name='remont'),
     path('users/', include('users.urls', namespace='users')),
     path('', include('user.urls'))]

@@ -1,16 +1,23 @@
 {% extends 'mainhtm.html' %}
 {% block title %} Заявка на ремонт {% endblock %}
 {% block main_1 %}
-<form action="" method="post">
+<form action="{% url 'remont' %}" method="post">
     {% csrf_token %}
-    <p align="center">Заявка на ремонт инвентарем</p><br>
-    <input type="text" class="form-control" placeholder="Имя отправителя который зарегистрирован"
-           name="application_3"><br>
-    <textarea placeholder="Наименование. Причина" style="width: 400px" name="application_4"></textarea><br>
-    <button type="submit" class="btn btn-outline-primary">Отправить</button>
-    {% for i in table %}
-        <p>Статус заявки: {{ i.status_application }}</p>
-    {% endfor %}
+    <div>
+        <p align="center">Заявка на ремонт инвентаря</p><br>
+        {{ form.first_name }}<br>
+        <!--    <input type="text" class="form-control" placeholder="Имя отправителя который зарегистрирован"-->
+        <!--           name="application_3"><br>-->
+        <textarea placeholder="Наименование Товара. Причина. Поле обязательно для заполнение!" style="width: 400px" name="application_4"></textarea><br>
+        <button type="submit" class="btn btn-outline-primary">Отправить</button>
+    </div>
+    <br>
+    <div>
+        {% for i in table %}
+        <p>Отправитель: <b>{{ i.name }}</b>, Статус заявки: <b>{{ i.status_application }}</b></p>
+        <!--        <p>Отправитель: {{ i.name }} Статус заявки: {{ i.status_application }}</p>-->
+        {% endfor %}
+    </div>
     <!--            <a href='#' type="button" class="btn btn-outline-primary">На главную</a>-->
     <!--        </div>-->
     <!--        <div>-->

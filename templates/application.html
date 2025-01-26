@@ -4,8 +4,9 @@
 <form action="" method="post">
     {% csrf_token %}
     <p align="center">Заявка на управление инвентарем</p><br>
-    <input type="text" class="form-control" placeholder="Имя отправителя который зарегистрирован"
-           name="application_1"><br>
+    <input type="text" class="form-control" placeholder="Поле не заполняется вместо него будет отправлено ваше имя"
+           name="application_1" disabled><br>
+    <textarea placeholder="Заявление. Необязательно" style="width: 400px" name="application_2"></textarea><br>
 <!--    <textarea placeholder="Введите текст заявки" style="width: 400px" name="application_2"></textarea><br>-->
     <div><button type="submit" class="btn btn-outline-primary">Отправить</button></div><br>
     <div>

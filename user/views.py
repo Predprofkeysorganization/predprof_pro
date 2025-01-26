@@ -1,6 +1,8 @@
 from django.http import HttpResponse
+from django import forms
 from django.shortcuts import render, HttpResponseRedirect
 from user.models import Inventory, Application, ApplicationRepair
+from users.forms import ApplicationForm
 from django.urls import reverse
 
 
@@ -21,25 +23,28 @@ def authorization(request):
 
 def authorization1(request):
     if request.method == 'POST':
+
         dict_obj_1 = dict(request.POST)
-        get_object = dict_obj_1.get('application_1', False)
-        if get_object[0]:
-            app = Application(name_application=''.join(get_object), status_application='необработана')
-            app.save()
-            return HttpResponseRedirect(reverse('main'))
-    return render(request, 'application.html', context={'table': Application.objects.all()})
+        get_object = dict_obj_1.get('application_2')
+        app = Application(name_application=request.user.username, information=''.join(get_object),
+                              status_application='необработана')
+        app.save()
+        return HttpResponseRedirect(reverse('index'))
+    return render(request, 'application.html',
+                  context={'table': list(Application.objects.filter(name_application=request.user.username))})
 
 
 def authorization2(request):
     if request.method == 'POST':
         dict_obj_1 = dict(request.POST)
-        get_object = dict_obj_1.get('application_3', False)
-        get_object_1 = dict_obj_1.get('application_4', False)
-        if get_object[0]:
-            app = ApplicationRepair(name=''.join(get_object), repair_info=''.join(get_object_1))
+        get_object_1 = dict_obj_1.get('application_4')
+        if get_object_1[0]:
+            app = ApplicationRepair(name=request.user.username, repair_info=''.join(get_object_1))
             app.save()
-            return HttpResponseRedirect(reverse('main'))
-    return render(request, 'application_remont.html', context={'table': ApplicationRepair.objects.all()})
+            return HttpResponseRedirect(reverse('index'))
+    return render(request, 'application_remont.html',
+                  context={'table': list(ApplicationRepair.objects.filter(name=request.user.username)),
+                           'form': ApplicationForm()})
     # return render(request, 'application_remont.html')
 
 # def registration(request):

@@ -18,6 +18,7 @@ class Inventory(models.Model):
 
 class Plan(models.Model):
     name = models.CharField(max_length=256)
+    price = models.IntegerField(default=0)
     count = models.IntegerField(default=0)
     provider = models.CharField(max_length=256)
 
@@ -29,11 +30,12 @@ class Plan(models.Model):
 class Application(models.Model):
     id_application = models.IntegerField(primary_key=True, blank=True)
     name_application = models.CharField(max_length=128)
+    information = models.CharField(max_length=1000)
     status_application = models.CharField(max_length=12, choices=(
         ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
 
     def __str__(self):
-        return f'{self.name_application} {self.status_application}'
+        return f'{self.name_application} {self.information} {self.status_application}'
 
     class Meta:
         verbose_name = 'заявку'
@@ -46,6 +48,9 @@ class ApplicationRepair(models.Model):
     repair_info = models.CharField(max_length=1000)
     status_application = models.CharField(max_length=12, choices=(
         ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
+
+    def __str__(self):
+        return f'{self.id_application_repair} {self.name} {self.repair_info} {self.status_application}'
 
     class Meta:
         verbose_name = 'заявку на ремонт или замену'
