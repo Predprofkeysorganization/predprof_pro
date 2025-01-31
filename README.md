@@ -8,6 +8,8 @@
 
 
 
-API url: "http://127.0.0.1:8000/api/apikey/"\n
+API url: "http://127.0.0.1:8000/api/apikey/"
+
 Логин для админа (Суперпользователя): kele
+
 пароль: kele12
