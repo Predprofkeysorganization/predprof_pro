@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from user.models import Application
+from rest_framework.generics import ListAPIView
+from user.models import Plan
 
 
-class Application_table_serializers(serializers.ModelSerializer):
+class SerializerPlan(serializers.ModelSerializer):
     class Meta:
-        model = Application
-        fields = '__all__'
+        model = Plan
+        fields = ('id', 'name', 'price', 'count', 'provider')
+
+
+class PlanSerializer(ListAPIView):
+    queryset = Plan.objects.all()
+    serializer_class = SerializerPlan

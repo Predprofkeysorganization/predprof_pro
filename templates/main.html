@@ -1,35 +1,20 @@
-{% extends 'mainhtm.html' %}
+{% extends 'base.html' %}
 
 {% block main_1 %}
 <form>
-    <!--    <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--            <th scope="col">Имя</th>-->
-    <!--            <th scope="col">Количество</th>-->
-    <!--            <th scope="col">Состояние</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
     {% for i in inventory %}
     <div style="float: left; margin: 10px">
         <div class="card" style="width: 18rem; height: 25rem">
-            <img src="https://cdn.culture.ru/images/0f698765-1077-5fa2-93c4-aa6c5f5f54bd" class="card-img-top" alt="1">
+            <img src="https://cdn.culture.ru/images/0f698765-1077-5fa2-93c4-aa6c5f5f54bd" class="card-img-top"
+                 alt="картинка не загрузилась">
             <div class="card-body">
                 <h5 class="card-title">Наименование: {{ i.name }}</h5>
                 <h6 class="card-text">Количество: {{ i.count }}</h6>
-                <h6 class="card-text">Статус: {{ i.product_status }}</h6>
+                <h6 class="card-text">Состояние: {{ i.product_status }}</h6>
             </div>
         </div>
     </div>
-    <!--        <tr>-->
-    <!--            <td>{{ i.name }}</td>-->
-    <!--            <td>{{ i.count }}</td>-->
-    <!--            <td>{{ i.product_status }}</td>-->
-    <!--        </tr>-->
     {% endfor %}
-<!--    </tbody>-->
-<!--    </table>-->
 </form>
 
 {% endblock %}

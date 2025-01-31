@@ -1,14 +1,16 @@
-{% extends 'mainhtm.html' %}
+{% extends 'base.html' %}
 {% block title %} Заявки {% endblock %}
 {% block main_1 %}
-<form action="" method="post">
+<form action="{% url 'app' %}" method="post">
     {% csrf_token %}
     <p align="center">Заявка на управление инвентарем</p><br>
     <input type="text" class="form-control" placeholder="Поле не заполняется вместо него будет отправлено ваше имя"
            name="application_1" disabled><br>
     <textarea placeholder="Заявление. Необязательно" style="width: 400px" name="application_2"></textarea><br>
-<!--    <textarea placeholder="Введите текст заявки" style="width: 400px" name="application_2"></textarea><br>-->
-    <div><button type="submit" class="btn btn-outline-primary">Отправить</button></div><br>
+    <div>
+        <button type="submit" class="btn btn-outline-primary">Отправить</button>
+    </div>
+    <br>
     <div>
         {% for i in table %}
         <p><b>Отправитель:</b> {{ i.name_application }}, <b>Статус заявки:</b> {{ i.status_application }}</p>

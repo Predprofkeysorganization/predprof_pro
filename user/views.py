@@ -10,31 +10,32 @@ from django.urls import reverse
 
 
 def index(request):
-    return render(request, 'base.html', context={'inventory': Inventory.objects.all()})
-
-
-def main1(request):
     return render(request, 'main.html', context={'inventory': Inventory.objects.all()})
 
 
-def authorization(request):
-    return render(request, 'auth.html')
+# def main1(request):
+#     return render(request, 'main1.html', context={'inventory': Inventory.objects.all()})
+#
+#
+# def authorization(request):
+#     return render(request, 'auth.html')
 
 
-def authorization1(request):
+def application(request):
     if request.method == 'POST':
 
         dict_obj_1 = dict(request.POST)
         get_object = dict_obj_1.get('application_2')
-        app = Application(name_application=request.user.username, information=''.join(get_object),
-                              status_application='необработана')
+        text_info = ''.join(get_object) if ''.join(get_object) != '' else 'Сообщение отсутствует'
+        app = Application(name_application=request.user.username, information=text_info,
+                            status_application='необработана')
         app.save()
         return HttpResponseRedirect(reverse('index'))
     return render(request, 'application.html',
                   context={'table': list(Application.objects.filter(name_application=request.user.username))})
 
 
-def authorization2(request):
+def authorization_repair(request):
     if request.method == 'POST':
         dict_obj_1 = dict(request.POST)
         get_object_1 = dict_obj_1.get('application_4')
@@ -48,4 +49,5 @@ def authorization2(request):
     # return render(request, 'application_remont.html')
 
 # def registration(request):
-#     return render(request, 'registration_admin.html')
+#     return render(request, 'registration.html')
+

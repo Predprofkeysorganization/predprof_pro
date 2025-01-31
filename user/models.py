@@ -24,7 +24,7 @@ class Plan(models.Model):
 
     class Meta:
         verbose_name = 'позицию плана'
-        verbose_name_plural = 'План инвенторя'
+        verbose_name_plural = 'План инвентаря'
 
 
 class Application(models.Model):
@@ -39,7 +39,7 @@ class Application(models.Model):
 
     class Meta:
         verbose_name = 'заявку'
-        verbose_name_plural = 'Заявка'
+        verbose_name_plural = 'Заявки'
 
 
 class ApplicationRepair(models.Model):
@@ -54,14 +54,14 @@ class ApplicationRepair(models.Model):
 
     class Meta:
         verbose_name = 'заявку на ремонт или замену'
-        verbose_name_plural = 'заявка на ремонт или замену'
+        verbose_name_plural = 'заявки на ремонт или замену'
 
 
 class Report(models.Model):
     id_report = models.IntegerField(primary_key=True, blank=True)
     name_manager = models.CharField(max_length=128)
-    status_report = models.CharField(max_length=13, choices=(
-        ('использует', 'использует'), ('не использует', 'не использует')), default='не использует')
+    status_report = models.CharField(max_length=14, choices=(
+        ('неповреждённый', 'неповреждённый'), ('повреждённый', 'повреждённный')), default='неповреждённый')
 
     def __str__(self):
         return f'{self.id_report} {self.name_manager} {self.status_report}'

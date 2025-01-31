@@ -27,10 +27,10 @@ def registration(request):
         form = RegistrationUser(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse('users:login'))
     else:
         form = RegistrationUser()
-    return render(request, 'registration_admin.html', context={'form': form, 'table': Application.objects.all()})
+    return render(request, 'registration.html', context={'form': form, 'table': Application.objects.all()})
 
 
 def exit(request):
