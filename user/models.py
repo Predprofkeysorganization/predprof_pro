@@ -32,7 +32,8 @@ class Application(models.Model):
     name_application = models.CharField(max_length=128)
     information = models.CharField(max_length=1000)
     status_application = models.CharField(max_length=12, choices=(
-        ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
+        ('не обработана', 'не обработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')),
+                                          default='не обработана')
 
     def __str__(self):
         return f'{self.name_application} {self.information} {self.status_application}'
@@ -47,7 +48,8 @@ class ApplicationRepair(models.Model):
     name = models.CharField(max_length=128)
     repair_info = models.CharField(max_length=1000)
     status_application = models.CharField(max_length=12, choices=(
-        ('необработана', 'необработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')), default='необработана')
+        ('не обработана', 'не обработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')),
+                                          default='не обработана')
 
     def __str__(self):
         return f'{self.id_application_repair} {self.name} {self.repair_info} {self.status_application}'
