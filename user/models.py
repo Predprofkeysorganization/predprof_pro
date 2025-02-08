@@ -31,7 +31,7 @@ class Application(models.Model):
     id_application = models.IntegerField(primary_key=True, blank=True)
     name_application = models.CharField(max_length=128)
     information = models.CharField(max_length=1000)
-    status_application = models.CharField(max_length=12, choices=(
+    status_application = models.CharField(max_length=13, choices=(
         ('не обработана', 'не обработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')),
                                           default='не обработана')
 
@@ -47,7 +47,7 @@ class ApplicationRepair(models.Model):
     id_application_repair = models.IntegerField(primary_key=True, blank=True)
     name = models.CharField(max_length=128)
     repair_info = models.CharField(max_length=1000)
-    status_application = models.CharField(max_length=12, choices=(
+    status_application = models.CharField(max_length=13, choices=(
         ('не обработана', 'не обработана'), ('одобрена', 'одобрена'), ('отклонена', 'отклонена')),
                                           default='не обработана')
 
