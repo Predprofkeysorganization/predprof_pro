@@ -13,8 +13,8 @@
 Перенесем к себе на устройства: "git clone -b master --single-branch https://github.com/Predprofkeysorganization/predprof_pro.git"
   1. Открываем проект в среде разработки.
   2. Установим фреймворк и другие библиотеки "pip install -r requerements.txt"
-Открывам терминал в среде разработки и используем команду "python3 manage.py runserver"
-API url: "http://127.0.0.1:8000/api/apikey/"
+  3. Открывам терминал в среде разработки и используем команду "python3 manage.py runserver"
+  4. API url: "http://127.0.0.1:8000/api/apikey/"
 
 Логин для администратора (Суперпользователя): kele
 
